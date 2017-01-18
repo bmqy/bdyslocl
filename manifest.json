@@ -1,0 +1,26 @@
+{
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html",
+      "default_title": "百度云分享链接一键登录"
+   },
+   "content_scripts": [ {
+      "js": [ "js/jquery-2.2.3.min.js", "content.js" ],
+      "matches": [ "tabs", "http://*/*", "https://*/*" ]
+   } ],
+   "description": "为网页中的百度云分享链接添加一键登录",
+   "icons": {
+      "128": "images/icon-large.png",
+      "16": "images/icon-bitty.png",
+      "48": "images/icon-small.png"
+   },
+   "key": "",
+   "manifest_version": 2,
+   "name": "百度云分享链接一键登录",
+   "permissions": [ "tabs", "http://*/*", "https://*/*" ],
+   "update_url": "",
+   "version": "1.0"
+}
