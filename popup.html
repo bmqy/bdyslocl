@@ -1,23 +1,65 @@
 <!doctype html>
-<link href="css/weui-masterv1.02/dist/style/weui.css" rel="stylesheet" />
-<script src="js/jquery-2.2.3.min.js"></script>
-<script type="text/javascript" src="js/jquery.cookie.js"></script>
-<script src="popup.js"></script>
-<div id="main_page" style="width:400px;"> <img style="width:100%" alt="一名法学生" src="images/logo.jpg"/>
-    <div class="page__bd">
-        <article class="weui-article">
-            <h1>百度云密码自动录入</h1>
-            <section>
-                <h2 class="title">兼容网站：</h2>
-                <section>
-                    <h3>鱼C工作室（http://blog.fishc.com/）<br>BTBT电影(http://www.btbtdy.com/)</h3>
-                  <p style="color:rgba(182,182,182,1.00); text-align:right">
-                    本插件将会随性更新～ </p>
-                </section>
-            </section>
-        </article>
+<html>
+<title>百度云分享链接一键登录</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+    }
+    .bdyslocl {
+        width: 188px;
+        padding: 10px;
+        background-color: #007acc;
+        -box-shadow: 0 0 10px 2px rgba(0, 122, 204, 0.50);
+        border: 1px solid rgba(245, 245, 245, 0.6);
+        font-size: 12px;
+        color: #fff;
+    }
+    .bdyslocl-hd {
+        margin-bottom: 5px;
+        padding-bottom: 1px;
+        border-bottom: 1px dashed #e6e6e6;
+    }
+    .bdyslocl-bd p {
+        margin-bottom: 10px;
+    }
+    .bdyslocl-bd a {
+        color: #fff;
+        display: block;
+    }
+    .bdyslocl-bd a:hover {
+        color: #eee;
+    }
+    .bdyslocl-ft {
+        margin-top: 5px;
+        border-top: 1px dashed rgba(238, 238, 238, 0.5);
+        text-align: right;
+        color: rgba(238, 238, 238, 0.5);
+    }
+    .bdyslocl-ft a {
+        color: rgba(238, 238, 238, 0.5);
+        display: inline;
+        text-decoration: none;
+    }
+    .bdyslocl-ft a:hover {
+        text-decoration: underline;
+    }
+</style>
+<body>
+
+<div class="bdyslocl">
+    <div class="bdyslocl-hd"><span id="name"></span>：</div>
+    <div class="bdyslocl-bd">
+        <p style="color: #ccc;">未发现百度云分享链接！</p>
     </div>
-    <div id="qrcode" style=" height: 90px; width: 90px; position: absolute; left: 285px; top: 155px; display:none"><img style="width:100%;" alt="微信二维码" src="images/qrcode.jpg"></div>
-    <div style="width:90px; float:right"><img id="weixin" alt="微信" style="width:40%; padding-right:10px; cursor:pointer" src="images/wechat.png"/><img id="weibo" alt="微博" style="width:40%;cursor:pointer" src="images/sina_weibo.png"/></div>
+    <div class="bdyslocl-ft">By：<a href="javascript:;" target="_blank" id="website">bmqy</a>&nbsp;&nbsp;Ver：<span id="version"></span></div>
 </div>
-  
+
+<script src="js/jquery.2.1.4.min.js"></script>
+<script src="js/popup.js"></script>
+</body>
+</html>
