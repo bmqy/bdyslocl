@@ -17,7 +17,5 @@ $('.bdyslocl-bd').delegate('a', 'click', function () {
 
 document.addEventListener('DOMContentLoaded', function(){
     $('#name').text(chrome.runtime.getManifest().name);
-    $('#author').text(chrome.runtime.getManifest().author);
-    $('#website').attr('href', chrome.runtime.getManifest().homepage_url);
     $('#version').text(chrome.runtime.getManifest().version);
 });
