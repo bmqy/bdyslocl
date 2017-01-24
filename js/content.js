@@ -71,3 +71,8 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
         });
     }
 });
+
+// 监听页面变化
+document.addEventListener('DOMNodeInserted', function(e){
+    getBdysls();
+});
