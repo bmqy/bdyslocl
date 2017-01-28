@@ -51,6 +51,23 @@ function getBdysls(){
                 oBdyslist += '<p><a href="' + sBdysOpenUrlHttp + '://' + aBdys[j].link + '" target="_blank" title="' + oBdyslistAtitle + '">' + (j + 1) + '、' + aBdys[j].link + '</a></p>';
             }
         }
+
+        if($('.bdys_webpage_inner_tips').size()<1){
+            var oBdysWebpageInnerTips = $('<div class="bdys_webpage_inner_tips"><p>本页发现 <span class="bdys_webpage_inner_tips_num"></span> 条百度云链接！</p></div>');
+            var oBdysWebpageInnerTipsStyle = $('<style>.bdys_webpage_inner_tips{padding:25px;background-color:rgba(0, 122, 204, 0.9);box-shadow:0 0 18px 1px #007acc;position:fixed;top:50%;left:50%;z-index:9999999999;transform:translate(-50%,-50%);}.bdys_webpage_inner_tips p{font-size:18px;color:#fff;}.bdys_webpage_inner_tips span{font-weight:bolder;}</style>');
+            oBdysWebpageInnerTips.find('span').text(aBdys.length);
+            $('body').append(oBdysWebpageInnerTipsStyle,oBdysWebpageInnerTips);
+            setTimeout(function () {
+                oBdysWebpageInnerTips.fadeOut();
+            },2000);
+        }
+        else{
+            document.querySelector('.bdys_webpage_inner_tips_num').innerHTML = aBdys.length;
+            $('.bdys_webpage_inner_tips').fadeIn();
+            setTimeout(function () {
+                $('.bdys_webpage_inner_tips').fadeOut();
+            },1000);
+        }
     }
     else{
         oBdyslist = '<p style="color: #ccc;">未发现百度云分享链接！</p>'
@@ -59,6 +76,7 @@ function getBdysls(){
     chrome.runtime.sendMessage({badge: aBdys.length, action: 'setTabsBadge'}, function (response) {
         console.log(response.result);
     });
+
     return oBdyslist;
 }
 getBdysls();
