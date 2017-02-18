@@ -23,8 +23,11 @@ function getBdysls(){
     // 按查找规则寻找百度云链接，并生成结果集
     var aBdys = [];
     var oBdyslist = '';
+    var nOldBdysCount = localStorage.getItem('nOldBdysCount');
+
     if($("html").text().match(reg)){
         aBdys = $("html").text().match(reg);
+        localStorage.setItem('nOldBdysCount', aBdys.length);
     }
     if(aBdys.length > 0){
         // 将找到的链接地址字符串解析为json数据
@@ -62,11 +65,13 @@ function getBdysls(){
             },2000);
         }
         else{
-            document.querySelector('.bdys_webpage_inner_tips_num').innerHTML = aBdys.length;
-            $('.bdys_webpage_inner_tips').fadeIn();
-            setTimeout(function () {
-                $('.bdys_webpage_inner_tips').fadeOut();
-            },1000);
+            if(nOldBdysCount !== aBdys.length){
+                document.querySelector('.bdys_webpage_inner_tips_num').innerHTML = aBdys.length;
+                $('.bdys_webpage_inner_tips').fadeIn();
+                setTimeout(function () {
+                    $('.bdys_webpage_inner_tips').fadeOut();
+                },1000);
+            }
         }
     }
     else{
