@@ -15,7 +15,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
 
 // 更新图标角标
 function updateTabsBadge(tabsBadge) {
-    console.log(tabsBadge);
     chrome.browserAction.setBadgeText({
         text: (tabsBadge > 0) ? ''+ tabsBadge : ''
     });

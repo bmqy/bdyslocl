@@ -55,7 +55,7 @@ function getBdysls(){
             }
         }
 
-        if($('.bdys_webpage_inner_tips').size()<1){
+        if($('.bdys_webpage_inner_tips').size()==0){
             var oBdysWebpageInnerTips = $('<div class="bdys_webpage_inner_tips"><p>本页发现 <span class="bdys_webpage_inner_tips_num"></span> 条百度云链接！</p></div>');
             var oBdysWebpageInnerTipsStyle = $('<style>.bdys_webpage_inner_tips{padding:25px;background-color:rgba(0, 122, 204, 0.9);box-shadow:0 0 18px 1px #007acc;position:fixed;top:50%;left:50%;z-index:9999999999;transform:translate(-50%,-50%);}.bdys_webpage_inner_tips p{font-size:18px;color:#fff;}.bdys_webpage_inner_tips span{font-weight:bolder;}</style>');
             oBdysWebpageInnerTips.find('span').text(aBdys.length);
@@ -65,7 +65,7 @@ function getBdysls(){
             },2000);
         }
         else{
-            if(nOldBdysCount !== aBdys.length){
+            if(aBdys.length != nOldBdysCount){
                 document.querySelector('.bdys_webpage_inner_tips_num').innerHTML = aBdys.length;
                 $('.bdys_webpage_inner_tips').fadeIn();
                 setTimeout(function () {
@@ -84,7 +84,6 @@ function getBdysls(){
 
     return oBdyslist;
 }
-getBdysls();
 
 // 监听获取页面链接事件
 chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
@@ -95,6 +94,10 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
     }
 });
 
+// 页面加载完毕后获取链接
+document.addEventListener('DOMContentLoaded', function(e){
+    getBdysls();
+});
 // 监听页面变化
 document.addEventListener('DOMNodeInserted', function(e){
     getBdysls();
