@@ -6,7 +6,16 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse){
         sendResponse({result: request.badge});
     }
     else if(request.action == 'getAutoLoginPswd'){
-        sendResponse({autoLoginPswd: localStorage.getItem('autoLoginPswd')});
+        if(localStorage.getItem('autoLoginPswd')){
+            sendResponse({autoLoginPswd: localStorage.getItem('autoLoginPswd')});
+        }
+        else{
+            sendResponse({autoLoginPswd: ''});
+        }
+    }
+    else if(request.action == 'removeAtutoLoginPswd'){
+        localStorage.removeItem('autoLoginPswd');
+        sendResponse({result: '密码已移除！'});
     }
     else{
         sendResponse({result: '平安无事咯！'});

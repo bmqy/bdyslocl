@@ -7,6 +7,9 @@ if(locationUrl.indexOf("pan.baidu.com/share/") != -1){
                 var sPswd = response.autoLoginPswd;
                 $('#accessCode').val(sPswd);
                 $('#submitBtn').click();
+                chrome.runtime.sendMessage({action: 'removeAtutoLoginPswd'}, function (response) {
+                    console.log(response.result);
+                })
             }
             else{
                 console.log('无密码！');
